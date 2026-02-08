@@ -29,7 +29,7 @@ async def fetch_picsum_image(url: str) -> Image.Image:
         return Image.open(BytesIO(response.content)).convert("RGBA")
 
 async def generator(seed: str, index: int, title: str, artist: str, locale: str):
-    ident_seed = get_identity_seed(seed, index)
+    ident_seed = get_identity_seed(f"{seed}_{locale}", index)
     rng = random.Random(ident_seed)
 
     # 1. Select Font
