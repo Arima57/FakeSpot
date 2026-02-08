@@ -20,13 +20,17 @@ app.add_middleware(
 )
 
 @app.get("/image")
-async def imagen(seed: str, index: int, title: str, artist: str):
+async def imagen(seed: str, index: int, title: str, artist: str, locale: str):
     # Reverse the C# Uri.EscapeDataString logic
     clean_title = unquote_plus(title)
     clean_artist = unquote_plus(artist)
     
     # This will return a StreamingResponse (the JPEG)
-    return await generate_image(seed, index, clean_title, clean_artist)
+    return await generate_image(seed=seed, 
+                                index=index, 
+                                title=clean_title, 
+                                artist=clean_artist,
+                                locale=locale)
 
 @app.get("/audio")
 async def audio_gen(seed: str, index: int, title: str, artist: str):

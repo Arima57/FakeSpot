@@ -40,7 +40,7 @@ public static class SongGenerator
             string encodedTitle = Uri.EscapeDataString(song.Title);
             string encodedArtist = Uri.EscapeDataString(song.Artist);
 
-            song.CoverUrl = $"{cleanBaseUrl}/image?seed={globalSeed}&index={currentIndex}&title={encodedTitle}&artist={encodedArtist}";
+            song.CoverUrl = $"{cleanBaseUrl}/image?seed={globalSeed}&index={currentIndex}&title={encodedTitle}&artist={encodedArtist}&locale={locale}";
             song.AudioUrl = $"{cleanBaseUrl}/audio?seed={globalSeed}&index={currentIndex}";
 
             songs.Add(song);
